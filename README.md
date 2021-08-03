@@ -15,6 +15,9 @@ $ bundle exec rails server
 # install
 $ brew install postgresql
 
+# create user
+$ createuser --superuser --createrole postgres
+
 # start
 $ brew services start postgresql
 
