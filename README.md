@@ -1,24 +1,27 @@
-# README
+# Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+```zsh
+$ bundle install
+```
 
-* Ruby version
+## Note: DB
 
-* System dependencies
+```zsh
+# install
+$ brew install postgresql
 
-* Configuration
+# start
+$ brew services start postgresql
 
-* Database creation
+# list
+brew services list
 
-* Database initialization
+# stop
+$ brew services stop postgresql
+```
 
-* How to run the test suite
+## LICENSE
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+TODO:
