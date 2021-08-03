@@ -13,7 +13,13 @@ describe Api::V1::CalendarsController, type: :request do
       expect(response.status).to eq 200
     end
 
-    it 'should have expected numbers of list.' do
+    it 'responds JSON.' do
+      subject
+      expect(response.content_type).to eq "application/json; charset=utf-8"
+    end
+
+    # TODO: should not write on type: :request
+    it 'responds expected numbers of list.' do
       subject
       json = JSON.parse(response.body)
       expect(json["data"].length).to eq 5
