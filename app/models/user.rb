@@ -13,5 +13,6 @@
 #  index_users_on_company_id  (company_id)
 #
 class User < ApplicationRecord
+  has_many :calendar
   belongs_to :company
 end

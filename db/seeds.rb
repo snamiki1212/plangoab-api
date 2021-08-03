@@ -6,8 +6,10 @@ FactoryBot.reload
 
 # Load each seeds
 table_names = %w(
-  event
+  calendar
   resource
+  event
+  
   company
   user
 )
