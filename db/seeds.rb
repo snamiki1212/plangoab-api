@@ -9,6 +9,7 @@ table_names = %w(
   event
   resource
   company
+  user
 )
 table_names.each do |table_name|
   path = Rails.root.join("db/seeds/#{Rails.env.downcase}/#{table_name}.rb")
