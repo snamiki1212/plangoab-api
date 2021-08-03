@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_212423) do
+ActiveRecord::Schema.define(version: 2021_08_03_213027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 2021_08_03_212423) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "stories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "calendar_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["calendar_id"], name: "index_stories_on_calendar_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.bigint "company_id", null: false
@@ -60,4 +68,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_212423) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "calendars", "users"
+  add_foreign_key "stories", "calendars"
+  add_foreign_key "users", "companies"
 end

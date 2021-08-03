@@ -7,9 +7,10 @@ FactoryBot.reload
 # Load each seeds
 table_names = %w(
   calendar
+  story
   resource
   event
-  
+
   company
   user
 )

@@ -11,6 +11,11 @@
 #
 #  index_calendars_on_user_id  (user_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 class Calendar < ApplicationRecord
   belongs_to :user
+  has_many :story
 end
