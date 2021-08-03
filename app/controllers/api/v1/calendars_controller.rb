@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CalendarController < ApplicationController
+    class CalendarsController < ApplicationController
       def index
         calendars = Calendar.all()
         # TODO: derive visitor
