@@ -4,6 +4,9 @@
 
 ```zsh
 $ bundle install
+$ bundle exec rails db:setup
+$ bundle exec rails db:migrate
+$ bundle exec rails server
 ```
 
 ## Note: DB
