@@ -8,6 +8,17 @@
 #  order              :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  story_id           :bigint           not null
+#
+# Indexes
+#
+#  index_resources_on_story_id  (story_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (story_id => stories.id)
 #
 class Resource < ApplicationRecord
+  belongs_to :story
+  has_many :events
 end

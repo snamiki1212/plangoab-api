@@ -3,5 +3,7 @@ FactoryBot.define do
     sequence(:field) {|n| "field_#{n}"}
     sequence(:order) {|n| n}
     event_border_color { 'red' }
+
+    story
   end
 end

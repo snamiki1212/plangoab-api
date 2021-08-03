@@ -18,4 +18,5 @@
 #
 class Story < ApplicationRecord
   belongs_to :calendar
+  has_many :resources
 end

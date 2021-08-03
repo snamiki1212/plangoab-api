@@ -4,5 +4,7 @@ FactoryBot.define do
     ended_at { Date.new }
     title { "event title" }
     description { "description" }
+
+    resource
   end
 end
