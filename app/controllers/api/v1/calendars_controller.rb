@@ -14,6 +14,8 @@ module Api
 
       # def create
       #   # TODO:
+      # user = User.find_valid_user(user_id, license_key)
+      # calendar = Calendar.create!(user: user)
       # end
 
     end

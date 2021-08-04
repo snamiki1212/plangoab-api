@@ -19,4 +19,14 @@
 class User < ApplicationRecord
   has_many :calendar
   belongs_to :company
+
+  class << self
+    def find_valid_user(user_id, license_key)
+      User
+        .includes(:company)
+        .where(id: user_id)
+        .where(company: {license_key: license_key})
+        .first
+    end
+  end
 end
