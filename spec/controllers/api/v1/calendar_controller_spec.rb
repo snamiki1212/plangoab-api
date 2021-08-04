@@ -24,6 +24,23 @@ describe Api::V1::CalendarsController, type: :request do
       json = JSON.parse(response.body)
       expect(json["data"].length).to eq 5
     end
-
   end
+
+  describe "Get #show" do
+    let!(:calendars) { FactoryBot.create_list(:calendar, 5) }
+    let(:calendar) { calendars[1] }
+
+    subject { get "#{api_v1_calendars_path}/#{calendar.id}"}
+
+    it 'can be sucess.' do
+      subject
+      expect(response.status).to eq 200
+    end
+
+    it 'responds JSON.' do
+      subject
+      expect(response.content_type).to eq "application/json; charset=utf-8"
+    end
+  end
+
 end

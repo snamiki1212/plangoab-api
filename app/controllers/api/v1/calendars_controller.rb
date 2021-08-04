@@ -7,11 +7,11 @@ module Api
         render json: {status: "SUCESS", data: calendars}
       end
 
-      # def show
-      #   calendar = Calendar.find(params[:id])
-      #   # TODO: derive all calendar's children
-      #   render json: {status: "SUCESS", data: calendar}
-      # end
+      def show
+        calendar = Calendar.find(params[:id])
+        # TODO: derive all calendar's children
+        render json: {status: "SUCESS", data: calendar}
+      end
 
       # def create
       #   # TODO:
