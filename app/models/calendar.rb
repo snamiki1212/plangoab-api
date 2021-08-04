@@ -17,5 +17,5 @@
 #
 class Calendar < ApplicationRecord
   belongs_to :user
-  has_many :story
+  has_many :stories
 end

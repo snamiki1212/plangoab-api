@@ -5,5 +5,14 @@ FactoryBot.define do
     event_border_color { 'red' }
 
     story
+
+    transient do
+      event_count { 5 }
+    end
+    trait :with_events do
+      after(:create) do |resource, evalutor|
+        create_list(:event, evalutor.event_count, resource: resource)
+      end
+    end
   end
 end

@@ -2,14 +2,13 @@ module Api
   module V1
     class CalendarsController < ApplicationController
       def index
-        calendars = Calendar.all()
+        calendars = Calendar.all
         # TODO: derive visitor
         render json: {status: "SUCESS", data: calendars}
       end
 
       def show
-        calendar = Calendar.find(params[:id])
-        # TODO: derive all calendar's children
+        calendar = Calendar.includes(stories: [resources: :events]).find(params[:id])
         render json: {status: "SUCESS", data: calendar}
       end
 
