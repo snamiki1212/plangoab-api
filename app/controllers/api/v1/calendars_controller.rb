@@ -1,10 +1,10 @@
 module Api
   module V1
     class CalendarsController < ApplicationController
+      include Pagy::Backend
       def index
-        calendars = Calendar.all
-        # TODO: derive visitor
-        render json: {status: "SUCESS", data: calendars}
+        @pagy, @calendars = pagy(Calendar.all, items: 20, page: params[:page])
+        render json: {status: "SUCESS", data: @calendars}
       end
 
       def show
@@ -15,6 +15,7 @@ module Api
       # def create
       #   # TODO:
       # end
+
     end
   end
 end

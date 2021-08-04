@@ -3,10 +3,11 @@ require 'rails_helper'
 describe Api::V1::CalendarsController, type: :request do
   describe "Get #index" do
     before do
-      FactoryBot.create_list(:calendar, 5)
+      FactoryBot.create_list(:calendar, 21)
     end
 
     subject { get api_v1_calendars_path }
+    let(:subject_next_page) { get "#{api_v1_calendars_path}?page=2" }
 
     it 'can be sucess.' do
       subject
@@ -22,7 +23,11 @@ describe Api::V1::CalendarsController, type: :request do
     it 'responds expected numbers of list.' do
       subject
       json = JSON.parse(response.body)
-      expect(json["data"].length).to eq 5
+      expect(json["data"].length).to eq 20
+
+      subject_next_page
+      json = JSON.parse(response.body)
+      expect(json["data"].length).to eq 1
     end
   end
 
@@ -48,6 +53,7 @@ describe Api::V1::CalendarsController, type: :request do
       json = JSON.parse(response.body)
       req_calendar = json["data"]
       
+      expect(req_calendar["stories"]).not_to eq nil
       expect(req_calendar["stories"].length).to eq 5
       expect(req_calendar["stories"][0]["resources"].length).to eq 5
       expect(req_calendar["stories"][0]["resources"][0].events.length).to eq 5
