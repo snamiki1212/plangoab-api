@@ -16,6 +16,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Calendar < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :stories
 end
