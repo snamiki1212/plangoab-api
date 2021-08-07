@@ -9,6 +9,21 @@ $ bundle exec rails db:migrate
 $ bundle exec rails server
 ```
 
+## Tech Stacks
+
+- Core
+
+  - Rails 6.1.4
+  - Ruby 3.0.2
+
+- Pagination
+
+  - Pagy
+
+- Test
+
+  - RSpec, FactoryBot
+
 ## Note: DB
 
 ```zsh
@@ -22,7 +37,7 @@ $ createuser --superuser --createrole postgres
 $ brew services start postgresql
 
 # list
-brew services list
+$ brew services list
 
 # stop
 $ brew services stop postgresql
