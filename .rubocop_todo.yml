@@ -7,13 +7,6 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Offense count: 1
-# Configuration parameters: Include, CustomTransform, IgnoreMethods, SpecSuffixOnly.
-# Include: **/*_spec*rb*, **/spec/**/*
-RSpec/FilePath:
-  Exclude:
-    - "spec/controllers/api/v1/calendar_controller_spec.rb"
-
-# Offense count: 1
 # Configuration parameters: AllowSubject.
 RSpec/MultipleMemoizedHelpers:
   Max: 6
@@ -22,4 +15,4 @@ RSpec/MultipleMemoizedHelpers:
 # Configuration parameters: IgnoreSharedExamples.
 RSpec/NamedSubject:
   Exclude:
-    - "spec/controllers/api/v1/calendar_controller_spec.rb"
+    - "spec/controllers/api/v1/calendars_controller_spec.rb"
