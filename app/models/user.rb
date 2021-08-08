@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -17,7 +19,7 @@
 #  fk_rails_...  (company_id => companies.id)
 #
 class User < ApplicationRecord
-  has_many :calendar
+  has_many :calendar, dependent: :nullify
   belongs_to :company
 
   class << self
@@ -25,7 +27,7 @@ class User < ApplicationRecord
       User
         .includes(:company)
         .where(id: user_id)
-        .where(company: {license_key: license_key})
+        .where(company: { license_key: license_key })
         .first
     end
   end

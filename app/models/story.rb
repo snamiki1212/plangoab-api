@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: stories
@@ -18,6 +20,6 @@
 #
 class Story < ApplicationRecord
   belongs_to :calendar
-  has_many :resources
+  has_many :resources, dependent: :destroy
   accepts_nested_attributes_for :resources
 end

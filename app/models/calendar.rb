@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: calendars
@@ -17,6 +19,6 @@
 #
 class Calendar < ApplicationRecord
   belongs_to :user, optional: true
-  has_many :stories
+  has_many :stories, dependent: :destroy
   accepts_nested_attributes_for :stories
 end
