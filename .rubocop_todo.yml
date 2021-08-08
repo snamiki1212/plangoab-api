@@ -25,13 +25,6 @@ RSpec/NamedSubject:
     - "spec/controllers/api/v1/calendar_controller_spec.rb"
 
 # Offense count: 1
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: slashes, arguments
-Rails/FilePath:
-  Exclude:
-    - "config/environments/development.rb"
-
-# Offense count: 1
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:
   Exclude:
