@@ -20,9 +20,17 @@ $ bundle exec rails server
 
   - Pagy
 
+- Formater / Linter
+
+  - Rubocop
+
 - Test
 
   - RSpec, FactoryBot
+
+- CI
+
+  - TODO: GithubActions
 
 ## Note: DB
 
