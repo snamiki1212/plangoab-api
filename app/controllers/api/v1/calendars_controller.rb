@@ -22,6 +22,8 @@ module Api
         calendar = Calendar.new(@calendar_params)
         if calendar.save!
           render json: { status: 'SUCESS', data: calendar }
+        else
+          render json: { status: 'ERROR', data: nil }
         end
       end
 

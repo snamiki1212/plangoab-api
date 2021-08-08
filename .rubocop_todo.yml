@@ -23,9 +23,3 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/NamedSubject:
   Exclude:
     - "spec/controllers/api/v1/calendar_controller_spec.rb"
-
-# Offense count: 1
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - "app/controllers/api/v1/calendars_controller.rb"
