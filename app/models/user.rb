@@ -19,7 +19,7 @@
 #  fk_rails_...  (company_id => companies.id)
 #
 class User < ApplicationRecord
-  has_many :calendar
+  has_many :calendar, dependent: :nullify
   belongs_to :company
 
   class << self

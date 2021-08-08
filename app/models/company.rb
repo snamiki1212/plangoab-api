@@ -11,5 +11,5 @@
 #  updated_at  :datetime         not null
 #
 class Company < ApplicationRecord
-  has_many :user
+  has_many :user, dependent: :nullify
 end
