@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -25,7 +27,7 @@ class User < ApplicationRecord
       User
         .includes(:company)
         .where(id: user_id)
-        .where(company: {license_key: license_key})
+        .where(company: { license_key: license_key })
         .first
     end
   end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :resource do
-    sequence(:field) {|n| "field_#{n}"}
-    sequence(:order) {|n| n}
+    sequence(:field) { |n| "field_#{n}" }
+    sequence(:order) { |n| n }
     event_border_color { 'red' }
 
     story
