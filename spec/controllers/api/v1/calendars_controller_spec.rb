@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe Api::V1::CalendarsController, type: :request do
   describe 'GET #index' do
-    subject { get api_v1_calendars_path }
+    subject(:action) { get api_v1_calendars_path }
 
     before do
       FactoryBot.create_list(:calendar, 21)
@@ -13,18 +13,18 @@ describe Api::V1::CalendarsController, type: :request do
     let(:subject_next_page) { get "#{api_v1_calendars_path}?page=2" }
 
     it 'can be sucess.' do
-      subject
+      action
       expect(response.status).to eq 200
     end
 
     it 'responds JSON.' do
-      subject
+      action
       expect(response.content_type).to eq 'application/json; charset=utf-8'
     end
 
     # TODO: should not write on type: :request
     it 'responds expected numbers of list.' do
-      subject
+      action
       json = JSON.parse(response.body)
       expect(json['data'].length).to eq 20
 
@@ -35,24 +35,24 @@ describe Api::V1::CalendarsController, type: :request do
   end
 
   describe 'GET #show' do
-    subject { get "#{api_v1_calendars_path}/#{calendar.id}" }
+    subject(:action) { get "#{api_v1_calendars_path}/#{calendar.id}" }
 
     let!(:calendars) { FactoryBot.create_list(:calendar, 5, :with_stories) }
     let(:calendar) { calendars[1] }
 
     it 'can be sucess.' do
-      subject
+      action
       expect(response.status).to eq 200
     end
 
     it 'responds JSON.' do
-      subject
+      action
       expect(response.content_type).to eq 'application/json; charset=utf-8'
     end
 
     # TODO: should not write on type: :request
     skip 'responds with calendars and resources and stories and events as object.' do
-      subject
+      action
       json = JSON.parse(response.body)
       req_calendar = json['data']
 
@@ -64,7 +64,7 @@ describe Api::V1::CalendarsController, type: :request do
   end
 
   describe 'POST #create' do
-    subject { post api_v1_calendars_path, params: params }
+    subject(:action) { post api_v1_calendars_path, params: params }
 
     let(:calendar) { { stories_attributes: [story] } }
     let(:story) { { name: 'story-name', resources_attributes: [resource] } }
@@ -74,21 +74,20 @@ describe Api::V1::CalendarsController, type: :request do
     let(:params) { { calendar: calendar } }
 
     it 'can be sucess.' do
-      subject
+      action
       expect(response.status).to eq 200
     end
 
     it 'responds JSON.' do
-      subject
+      action
       expect(response.content_type).to eq 'application/json; charset=utf-8'
     end
 
     # TODO: should not write on type: :request
     it 'creates data internally.' do
-      expect { subject }.to change(Calendar, :count).by(1)
-                                                    .and change(Story, :count).by(1)
-                                                                              .and change(Resource, :count).by(1)
-                                                                                                           .and change(Event, :count).by(1)
+      expect {
+        action
+      }.to change(Calendar, :count).by(1).and change(Story, :count).by(1).and change(Resource, :count).by(1).and change(Event, :count).by(1)
     end
   end
 end

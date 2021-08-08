@@ -10,9 +10,3 @@
 # Configuration parameters: AllowSubject.
 RSpec/MultipleMemoizedHelpers:
   Max: 6
-
-# Offense count: 9
-# Configuration parameters: IgnoreSharedExamples.
-RSpec/NamedSubject:
-  Exclude:
-    - "spec/controllers/api/v1/calendars_controller_spec.rb"
