@@ -66,12 +66,15 @@ describe Api::V1::CalendarsController, type: :request do
   describe 'POST #create' do
     subject(:action) { post api_v1_calendars_path, params: params }
 
+    # models
     let(:calendar) { { stories_attributes: [story] } }
     let(:story) { { name: 'story-name', resources_attributes: [resource] } }
     let(:resource) { { event_border_color: 'red', field: 'filed', order: 1, events_attributes: [event] } }
     let(:event) { { description: 'description', title: 'title', ended_at: now, started_at: now } }
-    let(:now) { Date }
-    let(:params) { { calendar: calendar } }
+
+    # args
+    let(:now) { Date.new }
+    let(:params) { { calendar: calendar, birthday: now } }
 
     it 'can be sucess.' do
       action

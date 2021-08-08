@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :calendar do
     user
+    visitor
 
     transient do
       story_count { 5 }

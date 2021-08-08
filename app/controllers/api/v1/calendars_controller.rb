@@ -6,6 +6,7 @@ module Api
       include Pagy::Backend
       before_action :set_calendar_params, only: [:create]
       before_action :set_user, only: [:create]
+      before_action :set_visitor, only: [:create]
 
       def index
         @pagy, @calendars = pagy(Calendar.all, items: 20, page: params[:page])
@@ -19,7 +20,9 @@ module Api
 
       def create
         @calendar_params['user'] = @user
+        @calendar_params['visitor'] = @visitor
         calendar = Calendar.new(@calendar_params)
+        # debugger
         if calendar.save!
           render json: { status: 'SUCESS', data: calendar }
         else
@@ -48,6 +51,11 @@ module Api
           user_id = params[:user_id]
           license_key = params[:license_key]
           @user = User.find_valid_user(user_id, license_key)
+        end
+
+        def set_visitor
+          birthday = params[:birthday]
+          @visitor = Visitor.new(birthday: birthday)
         end
     end
   end
