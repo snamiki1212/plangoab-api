@@ -45,4 +45,4 @@ $ brew services stop postgresql
 
 ## LICENSE
 
-TODO:
+⚠️ Note that this code is not available as open source code.
