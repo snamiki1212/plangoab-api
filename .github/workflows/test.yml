@@ -35,10 +35,9 @@ jobs:
         run: |
           gem install bundler
           bundle install --path vendor/bundle --without production
-      # - name: Set env
-      #   run: |
-      #     echo '::set-env name=RAILS_ENV::test'
-      #     echo '::set-env name=DATABASE_URL::postgres://postgres:postgres@localhost:5432/my_database'
+      - name: Set env
+        run: |
+          echo '::set-env name=RAILS_ENV::test'
       - name: Setup DB
         run: |
           bundle exec rails db:schema:load
