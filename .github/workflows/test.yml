@@ -18,6 +18,8 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+    env:
+      RAILS_ENV: test
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
@@ -35,9 +37,6 @@ jobs:
         run: |
           gem install bundler
           bundle install --path vendor/bundle --without production
-      - name: Set env
-        run: |
-          echo '::set-env name=RAILS_ENV::test'
       - name: Setup DB
         run: |
           bundle exec rails db:schema:load
