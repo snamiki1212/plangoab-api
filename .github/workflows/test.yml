@@ -32,6 +32,8 @@ jobs:
           POSTGRES_DB: plangoab_api_test
         run: |
           bundle exec rails db:schema:load
+      - name: Run linter
+        run: bundle exec rubocop
       - name: Run tests
         run: bundle exec rspec
         env:
@@ -40,5 +42,3 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: plangoab_api_test
-      # - name: Run linter
-      #   run: bundle exec rubocop

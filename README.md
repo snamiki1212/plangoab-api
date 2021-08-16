@@ -32,13 +32,6 @@ $ bundle exec rails server
 
   - TODO: GithubActions
 
-## NOTE: Github Actions
-
-```zsh
-$ bundle exec rubocop -A
-$ bundle exec rspec
-```
-
 ## Note: DB
 
 ```zsh
