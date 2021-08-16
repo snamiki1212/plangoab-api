@@ -35,10 +35,9 @@ jobs:
       #     key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
       #     restore-keys: |
       #       ${{ runner.os }}-gem-
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
+      # - name: Install dependencies
+      #   run: |
+      #     bundle install
       - name: Setup DB
         run: |
           bundle exec rails db:create
