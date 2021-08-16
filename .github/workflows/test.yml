@@ -17,28 +17,19 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
-    env:
-      RAILS_ENV: test
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-        # with:
-        #  # ruby-version: 3.0.2 # automatically check .ruby-version file
-        #  # bundler-cache: true
-      # - name: Cache gems
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: vendor/bundle
-      #     key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-gem-
-      # - name: Install dependencies
-      #   run: |
-      #     bundle install
       - name: Setup DB
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: plangoab_api_test
         run: |
           bundle exec rails db:create
           bundle exec rails db:schema:load
