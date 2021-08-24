@@ -54,3 +54,5 @@ $ brew services stop postgresql
 ## LICENSE
 
 ⚠️ Note that this code is not available as open source code.
+
+I'm thinking about this license and have not decided yet what I choose.
