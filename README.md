@@ -51,6 +51,17 @@ $ brew services list
 $ brew services stop postgresql
 ```
 
+## NOTE: Tasks
+
+```zsh
+# run test
+$ bundle exec rspec
+
+# run lint
+$ bundle exec rubocop
+$ bundle exec rubocop --auto-correct
+```
+
 ## LICENSE
 
 ⚠️ Note that this code is not available as open source code.
