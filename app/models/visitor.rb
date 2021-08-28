@@ -10,5 +10,5 @@
 #  updated_at :datetime         not null
 #
 class Visitor < ApplicationRecord
-  has_many :calendar, dependent: :destroy
+  has_many :calendars, dependent: :destroy
 end

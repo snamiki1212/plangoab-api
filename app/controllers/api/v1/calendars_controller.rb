@@ -10,21 +10,21 @@ module Api
 
       def index
         @pagy, @calendars = pagy(Calendar.all, items: 20, page: params[:page])
-        render json: { status: 'SUCESS', data: @calendars }
+        render json: @calendars, each_serializer: Api::V1::CalendarSerializer
       end
 
       def show
         calendar = Calendar.includes(stories: [resources: :events]).find(params[:id])
-        render json: { status: 'SUCESS', data: calendar }
+        render json: calendar, each_serializer: Api::V1::CalendarSerializer
       end
 
       def create
         @calendar_params['user'] = @user
         @calendar_params['visitor'] = @visitor
         calendar = Calendar.new(@calendar_params)
-        # debugger
+
         if calendar.save!
-          render json: { status: 'SUCESS', data: calendar }
+          render json: calendar, each_serializer: Api::V1::CalendarSerializer
         else
           render json: { status: 'ERROR', data: nil }
         end
