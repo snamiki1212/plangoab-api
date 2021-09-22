@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
 
   create_table "stories", force: :cascade do |t|
     t.string "name"
+    t.integer "order"
     t.bigint "calendar_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
