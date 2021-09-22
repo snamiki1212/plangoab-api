@@ -9,29 +9,6 @@ $ bundle exec rails db:migrate
 $ bundle exec rails server
 ```
 
-## Tech Stacks
-
-- Core
-
-  - Rails 6.1.4
-  - Ruby 3.0.2
-
-- Pagination
-
-  - Pagy
-
-- Formater / Linter
-
-  - Rubocop
-
-- Test
-
-  - RSpec, FactoryBot
-
-- CI
-
-  - TODO: GithubActions
-
 ## Note: DB
 
 ```zsh
@@ -61,6 +38,29 @@ $ bundle exec rspec
 $ bundle exec rubocop
 $ bundle exec rubocop --auto-correct
 ```
+
+## Tech Stacks
+
+- Core
+
+  - Rails 6.1.4
+  - Ruby 3.0.2
+
+- Pagination
+
+  - Pagy
+
+- Formater / Linter
+
+  - Rubocop
+
+- Test
+
+  - RSpec, FactoryBot
+
+- CI
+
+  - TODO: GithubActions
 
 ## LICENSE
 
