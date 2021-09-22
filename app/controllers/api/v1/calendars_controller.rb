@@ -10,7 +10,7 @@ module Api
 
       def index
         @pagy, @calendars = pagy(Calendar.all, items: 20, page: params[:page])
-        render json: @calendars, each_serializer: Api::V1::CalendarSerializer
+        render json: @calendars, each_serializer: Api::V1::CalendarListSerializer
       end
 
       def show
