@@ -6,7 +6,7 @@
 $ bundle install
 $ bundle exec rails db:setup
 $ bundle exec rails db:migrate
-$ bundle exec rails server
+$ bundle exec rails server --port 3001
 ```
 
 ## Note: DB
