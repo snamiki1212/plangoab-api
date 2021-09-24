@@ -9,13 +9,13 @@ module Api
       before_action :set_visitor, only: [:create]
 
       def index
-        @pagy, @calendars = pagy(Calendar.all, items: 20, page: params[:page])
-        render json: @calendars, each_serializer: Api::V1::CalendarListSerializer
+        @pagy, @calendars = pagy(Calendar.includes(:user, :visitor).all, items: 20, page: params[:page])
+        render json: @calendars, each_serializer: Api::V1::CalendarListSerializer, include: '**'
       end
 
       def show
         calendar = Calendar.includes(stories: [resources: :events]).find(params[:id])
-        render json: calendar, each_serializer: Api::V1::CalendarSerializer
+        render json: calendar, each_serializer: Api::V1::CalendarSerializer, include: '**'
       end
 
       def create
@@ -24,7 +24,7 @@ module Api
         calendar = Calendar.new(@calendar_params)
 
         if calendar.save!
-          render json: calendar, each_serializer: Api::V1::CalendarSerializer
+          render json: calendar, each_serializer: Api::V1::CalendarSerializer, include: '**'
         else
           render json: { status: 'ERROR', data: nil }
         end
