@@ -48,27 +48,19 @@ module Api
               }
             ]
           ).tap{|it|
-            # debugger
-            # it[:stories_attributes] = it[:stories]&.map{|story|
-            #   story[:resources_attributes] = story.resources&.map{|resource|
-            #     resource[:events_attributes] = resource.events && []
-            #   } && []
-            # } && []
-            # debugger
+            next if it[:stories].nil?
+            it[:stories].length.times do |i|
+              it[:stories][i][:resources].length.times do |j|
+                it[:stories][i][:resources][j][:events_attributes] = 
+                  it[:stories][i][:resources][j][:events]
+                it[:stories][i][:resources][j].delete :events
+              end
+              it[:stories][i][:resources_attributes] = it[:stories][i][:resources]
+              it[:stories][i].delete :resources
+            end
+            it[:stories_attributes] = it[:stories]
+            it.delete :stories
           }.permit!
-
-          # @calendar_params = params.require(:calendar).permit(
-          #   :name,
-          #   stories_attributes: [
-          #     :name,
-          #     { resources_attributes: [
-          #       events_attributes: %i[
-          #         title
-          #         description
-          #       ]
-          #     ] }
-          #   ]
-          # )
         end
 
         def set_user

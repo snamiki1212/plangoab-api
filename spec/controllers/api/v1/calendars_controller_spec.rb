@@ -67,9 +67,9 @@ describe Api::V1::CalendarsController, type: :request do
     subject(:action) { post api_v1_calendars_path, params: params }
 
     # models
-    let(:calendar) { { stories_attributes: [story] } }
-    let(:story) { { name: 'story-name', resources_attributes: [resource] } }
-    let(:resource) { { event_border_color: 'red', field: 'filed', order: 1, events_attributes: [event] } }
+    let(:calendar) { { stories: [story] } }
+    let(:story) { { name: 'story-name', resources: [resource] } }
+    let(:resource) { { event_border_color: 'red', field: 'filed', order: 1, events: [event] } }
     let(:event) { { description: 'description', title: 'title', ended_at: now, started_at: now } }
 
     # args
