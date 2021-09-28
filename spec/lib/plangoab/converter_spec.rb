@@ -12,9 +12,23 @@ RSpec.describe Plangoab::Converter, type: :lib do
     # end
 
     describe do
-      let(:obj) { { parent1: [{ user1: "this is user1"}, { user1: "this is user2"}] } }
-      let(:params) { { parent1: { user1: nil } } }
-      it { is_expected.to include( { parent1_attributes: [ { user1_attributes: nil } ] } ) }
+      let(:obj) { { stories: [story, story] } }
+      let(:params) { { stories: { resources: { events: nil } } } }
+
+      let(:story) { {id: "story", resources: [ resource, resource] }}
+      let(:resource) { { id: "resource", events: [event, event] }}
+      let(:event) { {id: 'event'} }
+
+      it { is_expected.to include( { stories_attributes: [
+        {id: "story", resources_attributes: [
+          {id: "resource", events_attributes: [ {id: "event"}, {id: "event"} ] },
+          {id: "resource", events_attributes: [ {id: "event"}, {id: "event"} ] },
+        ] },
+        {id: "story", resources_attributes: [
+          {id: "resource", events_attributes: [ {id: "event"}, {id: "event"} ] },
+          {id: "resource", events_attributes: [ {id: "event"}, {id: "event"} ] },
+        ] },
+        ] } ) }
     end
 
     # describe do

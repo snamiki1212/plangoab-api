@@ -9,26 +9,52 @@ module Plangoab
     
 
     def self.replace_into_attributes_suffix!(obj, params)
-      return if obj.is_a? nil
+      do_replace_into_attributes_suffix!(obj, params, obj)
+      # puts "<start", obj, params, ">", ""
+      # return if obj.nil?
+      # return if params.nil?
+
+      # params.each do |key, val|
+      #   new_key = "#{key}_attributes".to_sym
+      #   obj[new_key] = obj.delete key
+
+      #   next if val.nil?
+
+      #   if val.is_a? Hash
+      #     puts "<is a", obj, ">", ""
+      #     # debugger
+      #     obj[new_key]&.length&.times do |i|
+      #       self.replace_into_attributes_suffix!(obj[new_key][i], params[key])
+      #     end
+      #     next
+      #   end
+        
+      #   puts "----- throw error"
+      # end
+
+    
+      # obj
+    end
+
+    def self.do_replace_into_attributes_suffix!(obj, params, root)
+      puts "<start", "obj:", obj, "params:", params, "root:", root, ">", ""
+      return if obj.nil?
+      return if params.nil?
+
       params.each do |key, val|
-        if val.nil?
-          # debugger
-          puts "val is nil", key, 99
-          debugger
-          obj["#{key}_attributes".to_sym] = obj.delete key.to_sym
-          next
-        end
+        new_key = "#{key}_attributes".to_sym
+        next if !obj[new_key].nil?
+        
+        obj[new_key] = obj.delete key
+        next if val.nil?
 
         if val.is_a? Hash
-          puts "call recur"
-          self.replace_into_attributes_suffix!(obj[key], val)
-          # debugger
-          obj["#{key}_attributes".to_sym] = obj.delete key
+          obj[new_key]&.length&.times do |i|
+            self.do_replace_into_attributes_suffix!(obj[new_key][i], params[key], root)
+          end
         end
-        # if val.is_a? Hash
-        # end
       end
-    
+
       obj
     end
   end
