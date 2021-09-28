@@ -21,6 +21,7 @@ module Api
       def create
         @calendar_params['user'] = @user
         @calendar_params['visitor'] = @visitor
+
         calendar = Calendar.new(@calendar_params)
 
         if calendar.save!
@@ -35,16 +36,39 @@ module Api
         def set_calendar_params
           @calendar_params = params.require(:calendar).permit(
             :name,
-            stories_attributes: [
+            stories: [
               :name,
-              { resources_attributes: [
-                events_attributes: %i[
-                  title
-                  description
+              {
+                resources: [
+                  events: %i[
+                    title
+                    description
+                  ]
                 ]
-              ] }
+              }
             ]
-          )
+          ).tap{|it|
+            # debugger
+            # it[:stories_attributes] = it[:stories]&.map{|story|
+            #   story[:resources_attributes] = story.resources&.map{|resource|
+            #     resource[:events_attributes] = resource.events && []
+            #   } && []
+            # } && []
+            # debugger
+          }.permit!
+
+          # @calendar_params = params.require(:calendar).permit(
+          #   :name,
+          #   stories_attributes: [
+          #     :name,
+          #     { resources_attributes: [
+          #       events_attributes: %i[
+          #         title
+          #         description
+          #       ]
+          #     ] }
+          #   ]
+          # )
         end
 
         def set_user
@@ -59,4 +83,9 @@ module Api
         end
     end
   end
+
+  
+  
+  
+  
 end
