@@ -51,15 +51,12 @@ module Api
             next if it[:stories].nil?
             it[:stories].length.times do |i|
               it[:stories][i][:resources].length.times do |j|
-                it[:stories][i][:resources][j][:events_attributes] = 
-                  it[:stories][i][:resources][j][:events]
-                it[:stories][i][:resources][j].delete :events
+                it[:stories][i][:resources][j][:events_attributes] =
+                  it[:stories][i][:resources][j].delete :events
               end
-              it[:stories][i][:resources_attributes] = it[:stories][i][:resources]
-              it[:stories][i].delete :resources
+              it[:stories][i][:resources_attributes] = it[:stories][i].delete :resources
             end
-            it[:stories_attributes] = it[:stories]
-            it.delete :stories
+            it[:stories_attributes] = it.delete :stories
           }.permit!
         end
 
