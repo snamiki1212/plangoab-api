@@ -1,11 +1,11 @@
 module Plangoab
   class Converter
 
-    def self.convert_into_attributes_suffix!(obj, params)
+    def self.convert_into_attributes_suffix!(obj, scheme)
       return if obj.nil?
-      return if params.nil?
+      return if scheme.nil?
 
-      params.each do |key, val|
+      scheme.each do |key, val|
         new_key = "#{key}_attributes".to_sym
         next if !obj[new_key].nil?
         
@@ -14,7 +14,7 @@ module Plangoab
 
         if val.is_a? Hash
           obj[new_key]&.length&.times do |i|
-            self.convert_into_attributes_suffix!(obj[new_key][i], params[key])
+            self.convert_into_attributes_suffix!(obj[new_key][i], scheme[key])
           end
         end
       end

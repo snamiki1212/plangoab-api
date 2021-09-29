@@ -3,17 +3,17 @@ require 'rails_helper'
 RSpec.describe Plangoab::Converter, type: :lib do
 
   describe '#convert_into_attributes_suffix' do
-    subject { described_class.convert_into_attributes_suffix!(obj, params) }
+    subject { described_class.convert_into_attributes_suffix!(obj, scheme) }
 
     describe do
       let(:obj) { { parent1: nil, parent2: nil } }
-      let(:params) { {parent1: nil, parent2: nil} }
+      let(:scheme) { {parent1: nil, parent2: nil} }
       it { is_expected.to include( { parent1_attributes: nil, parent2_attributes: nil } ) }
     end
 
     describe do
       let(:obj) { { stories: [story, story] } }
-      let(:params) { { stories: { resources: { events: nil } } } }
+      let(:scheme) { { stories: { resources: { events: nil } } } }
 
       let(:story) { {id: "story", resources: [ resource, resource] }}
       let(:resource) { { id: "resource", events: [event, event] }}
