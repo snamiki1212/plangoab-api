@@ -48,15 +48,8 @@ module Api
               }
             ]
           ).tap{|it|
-            next if it[:stories].nil?
-            it[:stories].length.times do |i|
-              it[:stories][i][:resources].length.times do |j|
-                it[:stories][i][:resources][j][:events_attributes] =
-                  it[:stories][i][:resources][j].delete :events
-              end
-              it[:stories][i][:resources_attributes] = it[:stories][i].delete :resources
-            end
-            it[:stories_attributes] = it.delete :stories
+            scheme = { stories: { resources: { events: nil } } }
+            Plangoab::Converter.convert_into_attributes_suffix!(it, scheme)
           }.permit!
         end
 
