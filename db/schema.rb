@@ -43,9 +43,8 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
   end
 
   create_table "resources", force: :cascade do |t|
-    t.string "field"
+    t.string "title"
     t.integer "order"
-    t.string "event_border_color"
     t.bigint "story_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,7 +53,6 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
 
   create_table "stories", force: :cascade do |t|
     t.string "name"
-    t.integer "order"
     t.bigint "calendar_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

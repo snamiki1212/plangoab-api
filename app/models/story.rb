@@ -6,7 +6,6 @@
 #
 #  id          :bigint           not null, primary key
 #  name        :string
-#  order       :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  calendar_id :bigint           not null
