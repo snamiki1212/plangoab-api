@@ -19,7 +19,9 @@ module Api
       end
 
       def create
-        @calendar_params['user'] = @user
+        # TODO:
+        # @calendar_params['user'] = @user
+
         @calendar_params['visitor'] = @visitor
 
         calendar = Calendar.new(@calendar_params)
@@ -35,15 +37,21 @@ module Api
 
         def set_calendar_params
           @calendar_params = params.require(:calendar).permit(
-            :name,
             stories: [
               :name,
               {
                 resources: [
-                  events: %i[
-                    title
-                    description
-                  ]
+                  :title,
+                  :order,
+                  {
+                    events: [
+                      :title,
+                      :description,
+                      :started_at,
+                      :ended_at,
+                      # :background_color, // TODO:
+                    ]
+                  }
                 ]
               }
             ]
@@ -56,7 +64,8 @@ module Api
         def set_user
           user_id = params[:user_id]
           license_key = params[:license_key]
-          @user = User.find_valid_user(user_id, license_key)
+          # @user = User.find_or_create_by(id: user_id, license_key: license_key)
+          @user = User.new()
         end
 
         def set_visitor
