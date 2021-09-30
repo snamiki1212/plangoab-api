@@ -37,7 +37,7 @@ module Api
         def set_calendar_params
           @calendar_params = params.require(:calendar).permit(
             stories: [
-              :name,
+              :title,
               {
                 resources: [
                   :title,

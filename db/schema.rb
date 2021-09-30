@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
   end
 
   create_table "stories", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.bigint "calendar_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

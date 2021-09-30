@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :story do
-    sequence(:name) { |n| "name_#{n}" }
+    sequence(:title) { |n| "title_#{n}" }
     calendar
 
     transient do

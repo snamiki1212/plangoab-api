@@ -68,9 +68,9 @@ describe Api::V1::CalendarsController, type: :request do
 
     # models
     let(:calendar) { { stories: [story] } }
-    let(:story) { { name: 'story-name', resources: [resource] } }
-    let(:resource) { { title: 'filed', order: 1, events: [event] } }
-    let(:event) { { title: 'title', description: 'description', started_at: now, ended_at: now } }
+    let(:story) { { title: 'story-title', resources: [resource] } }
+    let(:resource) { { title: 'resource-title', order: 1, events: [event] } }
+    let(:event) { { title: 'event-title', description: 'description', started_at: now, ended_at: now } }
 
     # args
     let(:now) { Date.new }
