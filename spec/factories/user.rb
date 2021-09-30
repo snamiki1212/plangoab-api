@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :user do
-    company
+    sequence(:license_key) { |n| "license_key_#{n}" }
   end
 end

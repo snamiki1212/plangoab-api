@@ -10,8 +10,6 @@ table_names = %w(
   story
   resource
   event
-
-  company
   user
 )
 table_names.each do |table_name|

@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
     t.index ["visitor_id"], name: "index_calendars_on_visitor_id"
   end
 
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "license_key"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "events", force: :cascade do |t|
     t.bigint "resource_id", null: false
     t.datetime "started_at"
@@ -61,10 +54,9 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.bigint "company_id", null: false
+    t.string "licen_key", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_users_on_company_id"
   end
 
   create_table "visitors", force: :cascade do |t|
@@ -78,5 +70,4 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
   add_foreign_key "events", "resources"
   add_foreign_key "resources", "stories"
   add_foreign_key "stories", "calendars"
-  add_foreign_key "users", "companies"
 end
