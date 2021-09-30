@@ -14,13 +14,11 @@ class User < ApplicationRecord
   has_many :calendars, dependent: :nullify
   belongs_to :company
 
-  class << self
-    def find_valid_user(user_id, license_key)
-      User
-        .includes(:company)
-        .where(id: user_id)
-        .where(company: { license_key: license_key })
-        .first
-    end
-  end
+  # class << self
+  #   def find_valid_user(license_key)
+  #     User
+  #       .where(license_key: license_key)
+  #       .first
+  #   end
+  # end
 end

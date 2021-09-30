@@ -5,7 +5,7 @@ module Api
     class CalendarsController < ApplicationController
       include Pagy::Backend
       before_action :set_calendar_params, only: [:create]
-      before_action :set_user, only: [:create]
+      # before_action :set_user, only: [:create]
       before_action :set_visitor, only: [:create]
 
       def index
@@ -19,7 +19,6 @@ module Api
       end
 
       def create
-        # TODO:
         # @calendar_params['user'] = @user
 
         @calendar_params['visitor'] = @visitor
@@ -61,12 +60,12 @@ module Api
           }.permit!
         end
 
-        def set_user
-          user_id = params[:user_id]
-          license_key = params[:license_key]
-          # @user = User.find_or_create_by(id: user_id, license_key: license_key)
-          @user = User.new()
-        end
+        # def set_user
+        #   # user_id = params[:user_id]
+        #   # license_key = params[:license_key]
+        #   # @user = User.find_valid_user(license_key: license_key)
+        #   # @user = User.new()
+        # end
 
         def set_visitor
           birthday = params[:birthday]
