@@ -48,7 +48,7 @@ module Api
                       :description,
                       :started_at,
                       :ended_at,
-                      # :background_color, // TODO:
+                      :background_color,
                     ]
                   }
                 ]

@@ -4,7 +4,6 @@ FactoryBot.define do
   factory :resource do
     sequence(:title) { |n| "title_#{n}" }
     sequence(:order) { |n| n }
-    event_border_color { 'red' }
 
     story
 

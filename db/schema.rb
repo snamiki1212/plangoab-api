@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
     t.datetime "ended_at"
     t.string "title"
     t.string "description"
+    t.string "background_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["resource_id"], name: "index_events_on_resource_id"
@@ -54,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_213029) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "licen_key", null: false
+    t.string "license_key", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

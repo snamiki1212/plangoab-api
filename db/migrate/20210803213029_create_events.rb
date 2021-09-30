@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.datetime :ended_at
       t.string :title
       t.string :description
+      t.string :background_color, null: true
 
       t.timestamps
     end
