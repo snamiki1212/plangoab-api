@@ -51,15 +51,16 @@ describe Api::V1::CalendarsController, type: :request do
     end
 
     # TODO: should not write on type: :request
-    skip 'responds with calendars and resources and stories and events as object.' do
+    it 'responds with calendars and resources and stories and events as object.' do
       action
       json = JSON.parse(response.body)
-      req_calendar = json['data']
+      data = json['data']
+      included = json["included"]
 
-      expect(req_calendar['stories']).not_to eq nil
-      expect(req_calendar['stories'].length).to eq 5
-      expect(req_calendar['stories'][0]['resources'].length).to eq 5
-      expect(req_calendar['stories'][0]['resources'][0].events.length).to eq 5
+      # debugger
+      expect(data['type']).to eq "calendars"
+      expect(data['relationships']["stories"]["data"].length).to eq 5
+      expect(included.length > 5).to be_truthy
     end
   end
 

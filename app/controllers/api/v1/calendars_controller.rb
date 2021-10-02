@@ -14,8 +14,10 @@ module Api
       end
 
       def show
-        calendar = Calendar.includes(stories: [resources: :events]).find(params[:id])
-        render json: calendar, each_serializer: Api::V1::CalendarDetailSerializer, include: { stories: { resources: :events } }
+        included = { stories: { resources: :events } }
+        calendar = Calendar.includes(included).find(params[:id])
+        # render json: calendar, each_serializer: Api::V1::CalendarDetailSerializer, include: included
+        render json: calendar, serializer: Api::V1::CalendarDetailSerializer, include: ['stories', 'stories.resources', 'stories.resources.events']
       end
 
       def create
@@ -26,7 +28,7 @@ module Api
         calendar = Calendar.new(@calendar_params)
 
         if calendar.save!
-          render json: calendar, each_serializer: Api::V1::CalendarDetailSerializer, include: { stories: { resources: :events } }
+          render json: calendar, serializer: Api::V1::CalendarDetailSerializer, include: { stories: { resources: :events } }
         else
           render json: { status: 'ERROR', data: nil }
         end
