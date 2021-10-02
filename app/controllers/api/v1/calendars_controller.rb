@@ -45,18 +45,18 @@ module Api
                   :title,
                   :order,
                   {
-                    events: [
-                      :title,
-                      :description,
-                      :started_at,
-                      :ended_at,
-                      :background_color,
+                    events: %i[
+                      title
+                      description
+                      started_at
+                      ended_at
+                      background_color
                     ]
                   }
                 ]
               }
             ]
-          ).tap{|it|
+          ).tap { |it|
             scheme = { stories: { resources: { events: nil } } }
             Plangoab::Converter.convert_into_attributes_suffix!(it, scheme)
           }.permit!
@@ -75,9 +75,4 @@ module Api
         end
     end
   end
-
-  
-  
-  
-  
 end

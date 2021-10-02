@@ -55,11 +55,11 @@ describe Api::V1::CalendarsController, type: :request do
       action
       json = JSON.parse(response.body)
       data = json['data']
-      included = json["included"]
+      included = json['included']
 
       # debugger
-      expect(data['type']).to eq "calendars"
-      expect(data['relationships']["stories"]["data"].length).to eq 5
+      expect(data['type']).to eq 'calendars'
+      expect(data['relationships']['stories']['data'].length).to eq 5
       expect(included.length > 5).to be_truthy
     end
   end

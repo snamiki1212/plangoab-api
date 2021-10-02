@@ -40,6 +40,6 @@ module PlangoabApi
     config.api_only = true
 
     # Load /lib packages
-    config.autoload_paths << Rails.root.join("lib")
+    config.autoload_paths << Rails.root.join('lib')
   end
 end

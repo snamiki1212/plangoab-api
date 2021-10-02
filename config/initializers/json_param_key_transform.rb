@@ -2,7 +2,7 @@
 # File: config/initializers/json_param_key_transform.rb
 # Transform JSON request param keys from JSON-conventional camelCase to
 # Rails-conventional snake_case:
-ActionDispatch::Request.parameter_parsers[:json] = lambda { |raw_post|
+ActionDispatch::Request.parameter_parsers[:json] = ->(raw_post) {
   # Modified from action_dispatch/http/parameters.rb
   data = ActiveSupport::JSON.decode(raw_post)
 
