@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Plangoab
   class Converter
     def self.convert_into_attributes_suffix!(obj, scheme)

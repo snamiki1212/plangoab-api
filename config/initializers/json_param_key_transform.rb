@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # REF: https://stackoverflow.com/questions/17240106/what-is-the-best-way-to-convert-all-controller-params-from-camelcase-to-snake-ca
 # File: config/initializers/json_param_key_transform.rb
 # Transform JSON request param keys from JSON-conventional camelCase to
