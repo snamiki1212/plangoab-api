@@ -4,7 +4,7 @@ module Api
   module V1
     class CalendarsController < ApplicationController
       include Pagy::Backend
-      before_action :set_calendar_params, only: [:create]
+      before_action :set_calendar, only: [:create]
       # before_action :set_user, only: [:create]
       before_action :set_visitor, only: [:create]
 
@@ -36,7 +36,7 @@ module Api
 
       private
 
-        def set_calendar_params
+        def set_calendar
           @calendar_params = params.require(:calendar).permit(
             stories: [
               :title,
@@ -58,7 +58,7 @@ module Api
             ]
           ).tap { |it|
             scheme = { stories: { resources: { events: nil } } }
-            Plangoab::Converter.convert_into_attributes_suffix!(it, scheme)
+            Plangoab::Converter.append_attributes_suffix!(it, scheme)
           }.permit!
         end
 
