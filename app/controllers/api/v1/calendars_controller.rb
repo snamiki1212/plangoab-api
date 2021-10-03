@@ -9,7 +9,7 @@ module Api
       before_action :set_visitor, only: [:create]
 
       def index
-        @pagy, @calendars = pagy(Calendar.includes(:user, :visitor).all, items: 20, page: params[:page])
+        @pagy, @calendars = pagy(Calendar.includes(:user, :visitor).all.order(id: :desc), items: 20, page: params[:page])
         render json: @calendars, each_serializer: Api::V1::CalendarListSerializer, include: %i[user visitor]
       end
 
