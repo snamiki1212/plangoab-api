@@ -39,6 +39,13 @@ $ bundle exec rubocop
 $ bundle exec rubocop --auto-correct
 ```
 
+## Note: Heroku
+
+```zsh
+# migrate
+heroku run rake db:migrate --app plangoab
+```
+
 ## Tech Stacks
 
 - Core
