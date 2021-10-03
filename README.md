@@ -12,20 +12,11 @@ $ bundle exec rails server --port 3001
 ## Note: DB
 
 ```zsh
-# install
-$ brew install postgresql
-
-# create user
-$ createuser --superuser --createrole postgres
-
-# start
-$ brew services start postgresql
-
-# list
-$ brew services list
-
-# stop
-$ brew services stop postgresql
+$ brew install postgresql # install
+$ createuser --superuser --createrole postgres # create user
+$ brew services start postgresql # start
+$ brew services list # list
+$ brew services stop postgresql # stop
 ```
 
 ## NOTE: Tasks
@@ -65,9 +56,14 @@ heroku run rake db:migrate --app plangoab
 
   - RSpec, FactoryBot
 
-- CI
+- Hosting
 
-  - TODO: GithubActions
+  - Heroku
+
+- CI/CD
+
+  - GitHub Actions
+  - Heroku GitHub Deploys
 
 ## LICENSE
 
