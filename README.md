@@ -54,7 +54,7 @@ heroku run rake db:migrate --app plangoab
 
 - Test
 
-  - RSpec, FactoryBot
+  - RSpec / FactoryBot
 
 - Hosting
 
@@ -67,6 +67,6 @@ heroku run rake db:migrate --app plangoab
 
 ## LICENSE
 
-⚠️ Note that this code is not available as open source code.
+© 2021 Shun Namiki aka Nash
 
-I'm thinking about this license and have not decided yet what I choose.
+Note that this code is not allowed to use as like OSS.
